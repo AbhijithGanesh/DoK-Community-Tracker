@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { supabase } from "../../utils/supabase";
-import getToken from "../api/auth";
+import { supabase } from "../utils/supabase";
+import getToken from "./api/auth";
 
 export default function Auth() {
   const [loading, setLoading] = useState(false);
