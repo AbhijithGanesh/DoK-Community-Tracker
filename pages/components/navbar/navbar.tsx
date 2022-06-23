@@ -10,7 +10,7 @@ type NavbarBody = {
 const NavbarItem = (item: NavbarBody): JSX.Element => {
   return (
     <>
-      <section className="underline_hover font-extrabold hover:transform hover:-translate-y-2 hover:bg-gray-800 hover:rounded-lg hover:px-2 hover:py-2 lg:text-2xl md:text-xl sm:text-lg">
+      <section className="underline_hover font-extrabold hover:transform hover:-translate-y-2 hover:bg-gray-800 hover:rounded-lg hover:px-2 hover:py-2 lg:text-xl md:text-xl sm:text-lg">
         <a href={item.link}>{item.body}</a>
       </section>
     </>
@@ -25,9 +25,10 @@ let Navbar = (): JSX.Element => {
           <Image src={logo} alt="Data on Kubernetes" layout="intrinsic" />
         </section>
         <section className="flex flex-1 text-white justify-end gap-4 px-2">
-          <NavbarItem link="/login" body="Login" />
+          <NavbarItem link="/login" body="Login/Sign in" />
           <NavbarItem link="/challenges" body="Challenges" />
           <NavbarItem link="/leaderboard" body="Leaderboard" />
+          <NavbarItem link="/app" body="Playground" />
         </section>
       </nav>
       <section className="h-0.5 w-auto bg-gradient-to-r from-[#094E63] via-pink to-[#00deb6]" />

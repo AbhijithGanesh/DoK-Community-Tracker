@@ -1,41 +1,125 @@
 import { useState } from "react";
 import { supabase } from "../utils/supabase";
-import getToken from "./api/auth";
+import Layout from "./Layout";
 
-export default function Auth() {
-  const [loading, setLoading] = useState(false);
+let sign_in_wrapper = async (email: string, password?: string) => {
+  const { user, session, error } = await supabase.auth.signIn({
+    email: email,
+    password: password,
+  });
+  return { user, session, error };
+};
+
+let LoginForm = (): JSX.Element => {
+  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
 
+  const [process, setProcess] = useState(false);
   return (
-    <div className="text-white row flex flex-center">
-      <div className="col-6 form-widget">
-        <h1 className="header">Supabase + Next.js</h1>
-        <p className="description">
-          Sign in via magic link with your email below
-        </p>
-        <div>
+    <>
+      <form className="">
+        <input
+          className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg px-2 mx-4 justify center"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          autoComplete="username"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg px-2 mx-4 justify center"
+          type="password"
+          name="password"
+          value={password}
+          placeholder="Enter your password"
+          onChange={(e) => setPassword(e.target.value)}
+        ></input>
+        <button
+          className="bg-gray-700 text-white font-bold text-xl rounded-lg mx-2 p-2"
+          onClick={async (e) => {
+            e.preventDefault();
+            setProcess(true);
+            await sign_in_wrapper(email, password);
+            console.log(supabase.auth.session());
+            setProcess(false);
+          }}
+          disabled={process}
+        >
+          Login
+        </button>
+      </form>
+    </>
+  );
+};
+
+let MagicLink = (): JSX.Element => {
+  const [email, setEmail] = useState("");
+  return (
+    <>
+      <section className="text-white text-2xl">
+        <form>
           <input
-            className="inputField bg-gray-300 text-black text-md px-4 py-0.5 rounded"
+            className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg px-2 mx-4 justify center"
             type="email"
-            placeholder="Your email"
+            name="email"
+            placeholder="Your Email"
+            autoComplete="username"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </div>
-        <div>
           <button
+            className="bg-gray-700 text-white font-bold text-xl rounded-lg mx-2 p-2"
             onClick={(e) => {
+              sign_in_wrapper(email);
               e.preventDefault();
-              setLoading(true);
-              getToken(email);
             }}
-            className="button block"
-            disabled={loading}
           >
-            <span>{loading ? "We've sent you a magic link." : "Send magic link"}</span>
+            Click Here!
           </button>
-        </div>
-      </div>
-    </div>
+        </form>
+      </section>
+    </>
   );
-}
+};
+
+let Auth = (): JSX.Element => {
+  const [magic, setMagic] = useState(false);
+  const Render = () => {
+    if (!magic) {
+      return <LoginForm />;
+    } else {
+      return <MagicLink />;
+    }
+  };
+
+  return (
+    <Layout
+      element={
+        <>
+          <section className="flex flex-auto px-2 py-2 text-center text-white text-4xl font-extrabold hover:italic">
+            Login
+          </section>
+          <section className="pl-4 text-white font-semibold text-lg">
+            {!magic ? (
+              <section>To access Magic Link</section>
+            ) : (
+              <section>To access standard login page</section>
+            )}
+            <button
+              className="text-white px-2 bg-gray-700 rounded-lg"
+              onClick={() => {
+                setMagic(!magic);
+              }}
+            >
+              Click Here!
+            </button>
+          </section>
+          {Render()}
+        </>
+      }
+    />
+  );
+};
+
+export default Auth;
