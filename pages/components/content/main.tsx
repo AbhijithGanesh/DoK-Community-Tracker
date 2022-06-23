@@ -12,7 +12,7 @@ const Main = (): JSX.Element => {
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       ></iframe>
       <section className="flex flex-auto py-4 text-white text-2xl font-semibold justify-center text-center">
-        The open-source community you need to explore,grow and advance your{" "}
+        The open-source community you need to explore, grow and advance your{" "}
         Data on Kubernetes skills!
       </section>
     </>

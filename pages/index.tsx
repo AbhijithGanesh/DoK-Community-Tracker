@@ -1,30 +1,31 @@
-import { useState, useEffect } from "react";
-import { supabase } from "../utils/supabase";
 import Signout from "./components/auth/signout";
-import Auth from "./components/auth/login";
+import Auth from "./login";
+import Layout from "./Layout";
 import Navbar from "./components/navbar/navbar";
 import Main from "./components/content/main";
 import About from "./components/content/about";
 import Challenges from "./components/content/challenges";
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [session, setSession] = useState(null);
+  const [session, setSession] = useState({});
 
   useEffect(() => {
-    setSession(supabase.auth.session());
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
+    if (sessionStorage.getItem("Session")) {
+      setSession(sessionStorage.getItem("Session")!);
+    }
   }, []);
 
   return (
-    <section className="px-2 grid lg:grid-cols-12 md:grid-cols-6 sm: grid-cols-1">
-      <section className="lg:col-start-3 lg:col-span-8 md:col-start-1 md:col-span-full sm:col-start-1">
-        <Navbar />
-        <Main />
-        <About />
-        <Challenges />
-      </section>
-    </section>
+    <Layout
+      element={
+        <>
+          <Navbar />
+          <Main />
+          <About />
+          <Challenges />
+        </>
+      }
+    />
   );
 }
