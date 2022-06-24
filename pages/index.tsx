@@ -1,10 +1,9 @@
-import Signout from "./components/auth/signout";
-import Auth from "./login";
+import * as React from "react";
 import Layout from "./Layout";
-import Navbar from "./components/navbar/navbar";
-import Main from "./components/content/main";
-import About from "./components/content/about";
-import Challenges from "./components/content/challenges";
+import Navbar from "../components/navbar/navbar";
+import Main from "../components/content/main";
+import About from "../components/content/about";
+import Challenges from "../components/content/challenges";
 import { useEffect, useState } from "react";
 
 export default function Home() {
