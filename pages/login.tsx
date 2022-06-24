@@ -133,7 +133,7 @@ let Auth = (): JSX.Element => {
     );
   } else {
     return (
-      <Layout
+      <Layout 
         element={
           <section className="py-8 text-white font-extrabold text-3xl">
             You have already logged in! <br />

@@ -1,6 +1,11 @@
 import * as React from "react";
 
-const Layout = ({ element }): JSX.Element => {
+interface Props {
+  element?: JSX.Element;
+  // any props that come into the component
+}
+
+const Layout = ({ element, ...props }: Props): JSX.Element => {
   return (
     <>
       <section className="px-2 grid lg:grid-cols-12 md:grid-cols-6 sm: grid-cols-1">
