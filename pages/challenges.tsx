@@ -121,3 +121,5 @@ let Challenges = () => {
     />
   );
 };
+
+export default Challenges;
