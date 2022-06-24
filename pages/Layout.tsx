@@ -2,7 +2,6 @@ import * as React from "react";
 
 interface Props {
   element?: JSX.Element;
-  // any props that come into the component
 }
 
 const Layout = ({ element, ...props }: Props): JSX.Element => {
