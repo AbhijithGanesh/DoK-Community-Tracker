@@ -67,7 +67,6 @@ let Auth = (): JSX.Element => {
   );
 
   if (!loggedIn) {
-    console.log(supabase.auth.session());
     return (
       <Layout
         element={
