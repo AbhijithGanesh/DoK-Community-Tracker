@@ -25,7 +25,7 @@ type Tag = {
 };
 
 const Tag_Element = ({ item }: Tag): JSX.Element => {
-  return <section className="text-white font-regular text-lg">#{item}</section>;
+  return <section className="font-regular text-lg">#{item}</section>;
 };
 
 const Card = ({
@@ -38,12 +38,12 @@ const Card = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <section className="border-2 border-bg-white my-6 rounded-2xl hover:transform-cpu hover:-translate-y-4 flex flex-auto justify-between">
+      <section className="text-white ring-2 ring-gray-300 my-8 rounded-2xl hover:transform-cpu hover: flex flex-auto justify-between hover:-translate-y-4 hover:bg-gray-300 hover:text-black">
         <section>
-          <section className="text-white py-2 px-4 text-2xl font-bold">
+          <section className="py-2 px-4 text-2xl font-bold">
             {title}
           </section>
-          <section className="px-4 font-semibold text-xl text-white">
+          <section className="px-4 font-semibold text-xl">
             {description}
           </section>
           <section className="flex flex-auto px-4 gap-4">
@@ -51,12 +51,12 @@ const Card = ({
               return <Tag_Element key={tag} item={tag} />;
             })}
           </section>
-          <section className="px-6 py-2 text-white font-light hover:italic text-lg">
-            {points} xp for this challenge. --&gt Easter egg, click on the
+          <section className="px-6 py-2 font-light hover:italic text-lg">
+            {points} xp for this challenge. -- Easter egg, click on the
             thumbnail.
           </section>
         </section>
-        <section className="p-4 lg:block md:hidden sm:hidden hover:-translate-x-4">
+        <section className="p-4 lg:block md:hidden sm:hidden">
           <a href={href} target="__blank">
             <Image
               src={thumbnail}
