@@ -28,7 +28,6 @@ let Navbar = (): JSX.Element => {
           <NavbarItem link="/login" body="Login/Sign in" />
           <NavbarItem link="/challenges" body="Challenges" />
           <NavbarItem link="/leaderboard" body="Leaderboard" />
-          <NavbarItem link="/app" body="Playground" />
         </section>
       </nav>
       <section className="h-0.5 w-auto bg-gradient-to-r from-[#094E63] via-pink to-[#00deb6]" />
