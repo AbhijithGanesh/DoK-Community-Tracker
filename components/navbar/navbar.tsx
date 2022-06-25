@@ -1,6 +1,7 @@
 import Image from "next/image";
 import * as react from "react";
 import logo from "../../public/images/dok-logo.png";
+import Link from "next/link";
 
 type NavbarBody = {
   link: string;
@@ -11,7 +12,7 @@ const NavbarItem = (item: NavbarBody): JSX.Element => {
   return (
     <>
       <section className="underline_hover font-extrabold hover:transform hover:-translate-y-2 hover:bg-gray-800 hover:rounded-lg hover:px-2 hover:py-2 lg:text-xl md:text-xl sm:text-lg">
-        <a href={item.link}>{item.body}</a>
+        <Link href={item.link}>{item.body}</Link>
       </section>
     </>
   );

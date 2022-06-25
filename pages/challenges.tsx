@@ -56,7 +56,7 @@ const Card = ({
             thumbnail.
           </section>
         </section>
-        <section className="p-4 lg:block md:hidden sm:hidden">
+        <section className="p-4 lg:block md:hidden sm:hidden hover:hidden">
           <a href={href} target="__blank">
             <Image
               src={thumbnail}

@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { supabase } from "../utils/supabase";
 import Layout from "./Layout";
-
-let sign_in_wrapper = async (email: string, password?: string) => {
-  const { user, session, error } = await supabase.auth.signIn({
-    email: email,
-    password: password,
-  });
-  return { user, session, error };
-};
+import { sign_in_wrapper } from "../utils/auth";
+import { basePath } from "../next.config";
+import { NextRouter, useRouter } from "next/router";
 
 let MagicLink = (): JSX.Element => {
   const [email, setEmail] = useState("");
@@ -40,31 +35,13 @@ let MagicLink = (): JSX.Element => {
   );
 };
 
-let LogOut = (): JSX.Element => {
-  return (
-    <>
-      <button
-        className="bg-gray-700 m-4 p-2 text-md text-white font-bold rounded-lg"
-        onClick={async (e) => {
-          await supabase.auth.signOut();
-          console.log("Logged Out");
-        }}
-      >
-        Log out!
-      </button>
-    </>
-  );
-};
-
-let Auth = (): JSX.Element => {
+let Auth = (): JSX.Element | any => {
   const [magic, setMagic] = useState(false);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-
+  const Router: NextRouter = useRouter();
   const [process, setProcess] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(
-    supabase.auth.session() ? true : false
-  );
+  const [loggedIn, setLoggedIn] = useState(supabase.auth.user() ? true : false);
 
   if (!loggedIn) {
     return (
@@ -112,9 +89,13 @@ let Auth = (): JSX.Element => {
                   <button
                     className="bg-gray-700 text-white font-bold text-xl rounded-lg m-2 py-1 px-2"
                     onClick={async (e) => {
-                      setLoggedIn(true);
+                      e.preventDefault();
                       setProcess(true);
                       await sign_in_wrapper(email, password);
+                      if (supabase.auth.user()) {
+                        Router.push(`/profiles/${supabase.auth.user()?.id}`);
+                        setLoggedIn(true);
+                      }
                       setProcess(false);
                     }}
                     disabled={process}
@@ -131,27 +112,28 @@ let Auth = (): JSX.Element => {
       />
     );
   } else {
-    return (
-      <Layout 
-        element={
-          <section className="py-8 text-white font-extrabold text-3xl">
-            You have already logged in! <br />
-            <>
-              <button
-                className="bg-gray-700 m-4 p-2 text-md text-white font-bold rounded-lg"
-                onClick={async (e) => {
-                  await supabase.auth.signOut();
-                  setLoggedIn(false);
-                  console.log("Logged Out");
-                }}
-              >
-                Log out!
-              </button>
-            </>
-          </section>
-        }
-      />
-    );
+    Router.push(`/profiles/${supabase.auth.user()?.id}`);
+    // re
+    //   <Layout
+    //     element={
+    //       <section className="py-8 text-white font-extrabold text-3xl">
+    //         You have logged in! <br />
+    //         <>
+    //           <button
+    //             className="bg-gray-700 m-4 p-2 text-md text-white font-bold rounded-lg"
+    //             onClick={async () => {
+    //               await supabase.auth.signOut();
+    //               setLoggedIn(false);
+    //               console.log("Logged Out");
+    //             }}
+    //           >
+    //             Log out!
+    //           </button>
+    //         </>
+    //       </section>
+    //     }
+    //   />
+    // );
   }
 };
 
