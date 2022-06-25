@@ -2,7 +2,8 @@ import { useState } from "react";
 import { supabase } from "../utils/supabase";
 import Layout from "./Layout";
 import { sign_in_wrapper } from "../utils/auth";
-import { basePath } from "../next.config";
+import { FiGitlab } from "react-icons/fi";
+import { FaGithubAlt, FaGoogle, FaMagic } from "react-icons/fa";
 import { NextRouter, useRouter } from "next/router";
 
 let MagicLink = (): JSX.Element => {
@@ -35,6 +36,63 @@ let MagicLink = (): JSX.Element => {
   );
 };
 
+let GoogleAuth = (): JSX.Element => {
+  return (
+    <>
+      <section className="mx-2 px-2 py-2 flex bg-gray-700 text-white font-semibold rounded-md text-lg hover:-translate-y-2">
+        <button
+          onClick={async (e) => {
+            const { user, session, error } = await supabase.auth.signIn({
+              provider: "google",
+            });
+          }}
+        >
+          Google
+        </button>
+        <FaGoogle className="mx-2 my-auto text-2xl" />
+      </section>
+    </>
+  );
+};
+
+let GitLabAuth = (): JSX.Element => {
+  return (
+    <>
+      <section className="mx-2 py-2 px-2 flex justify-between w-min bg-gray-700 text-white font-semibold rounded-md text-lg hover:-translate-y-2">
+        <button
+          onClick={async (e) => {
+            const { user, session, error } = await supabase.auth.signIn({
+              provider: "gitlab",
+            });
+          }}
+        >
+          GitLab
+        </button>
+        <FiGitlab className="my-auto mx-2 text-2xl" />
+      </section>
+    </>
+  );
+};
+
+let GithubAuth = (): JSX.Element => {
+  return (
+    <>
+      <section className="mx-2 px-2 py-2 flex justify-between w-min bg-gray-700 text-white font-semibold rounded-md text-lg hover:-translate-y-2">
+        <button
+          onClick={async (e) => {
+            const { user, session, error } = await supabase.auth.signIn({
+              provider: "github",
+            });
+          }}
+        >
+          GitHub
+        </button>
+        <FaGithubAlt className="my-auto mx-2 text-2xl" />
+      </section>
+    </>
+  );
+};
+
 let Auth = (): JSX.Element | any => {
   const [magic, setMagic] = useState(false);
   const [password, setPassword] = useState("");
@@ -48,29 +106,15 @@ let Auth = (): JSX.Element | any => {
       <Layout
         element={
           <>
-            <section className="flex flex-auto px-2 py-2 text-center text-white text-4xl font-extrabold hover:italic">
+            <section className="flex flex-auto py-8 px-2 text-center text-white text-4xl font-extrabold hover:italic">
               Login
             </section>
-            <section className="pl-4 py-4 text-white font-semibold text-lg">
-              {!magic ? (
-                <section>To access Magic Link</section>
-              ) : (
-                <section>To access standard login page</section>
-              )}
-              <button
-                className="text-white px-2 bg-gray-700 rounded-lg"
-                onClick={() => {
-                  setMagic(!magic);
-                }}
-              >
-                Click Here!
-              </button>
-            </section>
+
             {!magic ? (
               <>
                 <form>
                   <input
-                    className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg px-2 mx-4 justify center"
+                    className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg my-4 px-2 mx-4 justify center"
                     type="email"
                     name="email"
                     placeholder="Your Email"
@@ -79,7 +123,7 @@ let Auth = (): JSX.Element | any => {
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
-                    className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg px-2 mx-4 justify center"
+                    className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg my-4 px-2 mx-4 justify center"
                     type="password"
                     name="password"
                     value={password}
@@ -103,9 +147,35 @@ let Auth = (): JSX.Element | any => {
                     Login
                   </button>
                 </form>
+                <section className="pl-4 py-4 flex flex-wrap gap-4 text-white font-semibold text-lg">
+                  <section className="text-white px-2 flex justify-between bg-gray-700 rounded-md font-regular text-lg hover:-translate-y-2">
+                    <button
+                      onClick={() => {
+                        setMagic(!magic);
+                      }}
+                    >
+                      Magic Link
+                    </button>
+                    <FaMagic className="mx-2 my-auto text-xl" />
+                  </section>
+
+                  <GoogleAuth />
+                  <GithubAuth />
+                  <GitLabAuth />
+                </section>
               </>
             ) : (
-              <MagicLink />
+              <>
+                <MagicLink />
+                <button
+                  className="my-8 ml-4 text-white px-2 bg-green-700 rounded-md font-semibold text-lg hover:translate-y-2"
+                  onClick={() => {
+                    setMagic(!magic);
+                  }}
+                >
+                  Normal Login!
+                </button>
+              </>
             )}
           </>
         }
@@ -113,27 +183,6 @@ let Auth = (): JSX.Element | any => {
     );
   } else {
     Router.push(`/profiles/${supabase.auth.user()?.id}`);
-    // re
-    //   <Layout
-    //     element={
-    //       <section className="py-8 text-white font-extrabold text-3xl">
-    //         You have logged in! <br />
-    //         <>
-    //           <button
-    //             className="bg-gray-700 m-4 p-2 text-md text-white font-bold rounded-lg"
-    //             onClick={async () => {
-    //               await supabase.auth.signOut();
-    //               setLoggedIn(false);
-    //               console.log("Logged Out");
-    //             }}
-    //           >
-    //             Log out!
-    //           </button>
-    //         </>
-    //       </section>
-    //     }
-    //   />
-    // );
   }
 };
 

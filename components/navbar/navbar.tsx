@@ -11,7 +11,7 @@ type NavbarBody = {
 const NavbarItem = (item: NavbarBody): JSX.Element => {
   return (
     <>
-      <section className="underline_hover font-extrabold hover:transform hover:-translate-y-2 hover:bg-gray-800 hover:rounded-lg hover:px-2 hover:py-2 lg:text-xl md:text-xl sm:text-lg">
+      <section className="underline_hover font-extrabold hover:transform hover:-translate-y-2 hover:bg-gray-600 hover:rounded-lg hover:px-2 hover:py-2 lg:text-xl md:text-xl sm:text-lg">
         <Link href={item.link}>{item.body}</Link>
       </section>
     </>

@@ -11,10 +11,12 @@ type fetch_type = {
 }
 
 let Profile = (): JSX.Element => {
+  
   const Router = useRouter();
   const { profile } = Router.query;
   const [data, setData] = useState(Array<fetch_type>);
   const [loading, setloading] = useState(false);
+
   let fetch_data = async (context: string | string[]): Promise<void> => {
     let data = await supabase.from("Users").select(`username, userid`);
     setData(data.data!);
@@ -29,11 +31,10 @@ let Profile = (): JSX.Element => {
     }
     setloading(true);
   }
-  
 
   return (
     <Layout
-      element={
+      element={ 
         <>
         <section className="py-8 text-white font-extrabold text-2xl">
           Hello {data[0]?.username}
