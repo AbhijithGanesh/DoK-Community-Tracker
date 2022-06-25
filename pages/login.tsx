@@ -131,7 +131,7 @@ let Auth = (): JSX.Element | any => {
                     onChange={(e) => setPassword(e.target.value)}
                   ></input>
                   <button
-                    className="bg-gray-700 text-white font-bold text-xl rounded-lg m-2 py-1 px-2"
+                    className="bg-rose-900 text-white font-bold text-xl rounded-lg m-2 py-1 px-2"
                     onClick={async (e) => {
                       e.preventDefault();
                       setProcess(true);

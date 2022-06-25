@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Router, useRouter } from "next/router";
 import { supabase } from "../../utils/supabase";
 import Layout from "../Layout";
-import { ParsedUrlQuery } from "querystring";
 
 type fetch_type = {
   username:string,
