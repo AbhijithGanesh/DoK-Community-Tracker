@@ -13,7 +13,7 @@ let MagicLink = (): JSX.Element => {
       <section className="text-white text-2xl">
         <form>
           <input
-            className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-lg px-2 mx-4 justify center"
+            className="bg-gray-300 text-black font-bold text-2xl w-auto rounded-lg px-2 mx-4 justify center"
             type="email"
             name="email"
             placeholder="Your Email"
@@ -37,11 +37,7 @@ let MagicLink = (): JSX.Element => {
 };
 
 let Auth = (): JSX.Element | any => {
-  const [magic, setMagic] = useState(false);
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
   const Router: NextRouter = useRouter();
-  const [process, setProcess] = useState(false);
   const [loggedIn, setLoggedIn] = useState(supabase.auth.user() ? true : false);
 
   if (!loggedIn) {
@@ -54,39 +50,17 @@ let Auth = (): JSX.Element | any => {
             </section>
             <EmailAddr />
             <ThirdPartyAuth />
-
-            {/* {!magic ? (
-              <>
-                {" "}
-                <SupaAuth
-                  supabaseClient={supabase}
-                  providers={["google", "github", "gitlab"]}
-                  socialLayout="vertical"
-                  socialButtonSize="medium"
-                  magicLink={true}
-                  socialColors={false}
-                  className="font-extrabold hover:text-white"
-                />
-              </>
-            ) : (
-              <>
-                <MagicLink />
-                <button
-                  className="my-8 ml-4 text-white px-2 bg-green-700 rounded-md font-semibold text-lg hover:translate-y-2"
-                  onClick={() => {
-                    setMagic(!magic);
-                  }}
-                >
-                  Normal Login!
-                </button>
-              </>
-            )} */}
           </>
         }
       />
     );
   } else {
     Router.push(`/profiles/${supabase.auth.user()?.id}`);
+    return (
+      <>
+        <section className="bg-black"></section>
+      </>
+    );
   }
 };
 

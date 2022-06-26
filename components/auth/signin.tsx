@@ -53,7 +53,7 @@ const EmailAddr = (): JSX.Element => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
-            className="text-black font-light hover:underline bg-white rounded-md p-1 mx-1"
+            className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1"
             onClick={() => {
               setMagic(!magicLink);
             }}
@@ -61,7 +61,7 @@ const EmailAddr = (): JSX.Element => {
             Login with Magic Link!
           </button>
           <button
-            className="text-black font-light hover:underline bg-white rounded-md p-1 mx-1"
+            className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1"
             onClick={() => {
               router.push("/signup");
             }}

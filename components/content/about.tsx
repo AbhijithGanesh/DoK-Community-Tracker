@@ -3,7 +3,7 @@ import * as React from "react";
 const About = (): JSX.Element => {
   return (
     <>
-      <section className="py-8 flex justify-start text-left text-white font-black text-4xl hover:transition-transform  hover:translate-x-4  hover:italic">
+      <section className="py-8 translate-x-4 flex justify-start text-left text-white font-black text-4xl hover:transition-transform  hover:translate-x-8  hover:italic">
         What are these challenges?
       </section>
       <section className="text-white px-8 font-regular">

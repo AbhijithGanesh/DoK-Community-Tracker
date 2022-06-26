@@ -38,12 +38,12 @@ const Card = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <section className="text-white ring-2 ring-gray-300 my-8 rounded-2xl hover:transform-cpu hover: flex flex-auto justify-between hover:-translate-y-4 hover:bg-gray-300 hover:text-black">
+      <section className="text-white ring-2 ring-gray-300 my-8 rounded-2xl hover:transform-cpu hover: flex flex-auto justify-between hover:-translate-y-4">
         <section>
-          <section className="py-2 px-4 text-2xl font-bold">
+          <section className="py-2 px-4 text-2xl font-extrabold">
             {title}
           </section>
-          <section className="px-4 font-semibold text-xl">
+          <section className="px-4 font-bold text-xl">
             {description}
           </section>
           <section className="flex flex-auto px-4 gap-4">
@@ -63,7 +63,7 @@ const Card = ({
               alt="Thumbnail"
               layout="intrinsic"
               width={"250px"}
-              height={"150px"}
+              height={"125px"}
             />
           </a>
         </section>

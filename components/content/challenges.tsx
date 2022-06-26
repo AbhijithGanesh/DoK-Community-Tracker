@@ -3,7 +3,7 @@ import * as React from "react";
 const Challenges = (): JSX.Element => {
   return (
     <>
-      <section className="py-8 flex flex-auto justify-end text-right text-white font-extrabold text-4xl hover:italic hover:transition-transform  hover:-translate-x-4 ">
+      <section className="py-8 flex flex-auto justify-end text-right -translate-x-4 text-white font-extrabold text-4xl hover:italic hover:transition-transform  hover:-translate-x-8">
         Where can you contribute?
       </section>
       <section className="text-white px-8 font-regular">

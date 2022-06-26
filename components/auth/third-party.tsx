@@ -15,7 +15,7 @@ const SocialAuth = ({ name, icon }: SocialAuth): JSX.Element => {
         <Provider
           name={name}
           content={
-            <section className="text-gray-500 text-lg font-light hover:text-black">
+            <section className="text-gray-500 text-lg font-regular hover:text-black">
               Sign up with {name}
             </section>
           }
@@ -30,9 +30,18 @@ const ThirdPartyAuth = (): JSX.Element => {
     <Layout
       element={
         <>
-          <SocialAuth name="GitHub" icon={<FaGithub />} />
-          <SocialAuth name="Google" icon={<FaGoogle />} />
-          <SocialAuth name="GitLab" icon={<FaGitlab />} />
+          <SocialAuth
+            name="GitHub"
+            icon={<FaGithub className="text-black" />}
+          />
+          <SocialAuth
+            name="Google"
+            icon={<FaGoogle className=" text-black" />}
+          />
+          <SocialAuth
+            name="GitLab"
+            icon={<FaGitlab className="text-black" />}
+          />
         </>
       }
     />
