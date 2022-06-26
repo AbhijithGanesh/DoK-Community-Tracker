@@ -66,7 +66,7 @@ const EmailAddr = (): JSX.Element => {
                 className=" text-white text-lg font-bold rounded-md lg:py-1 p-1 sm:text-md"
                 onClick={() => {
                   sign_in_wrapper(email, password);
-                  router.push("/login")
+                  router.push("/")
                 }}
               >
                 Login
@@ -94,7 +94,7 @@ const EmailAddr = (): JSX.Element => {
         >
           Login with credentials
         </button>
-        <section className="bg-white  w-full h-0.5 my-4" />
+        <section className="bg-white w-full h-0.5 my-4" />
       </>
     );
   }
