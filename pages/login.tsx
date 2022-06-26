@@ -3,7 +3,8 @@ import { supabase } from "../utils/supabase";
 import Layout from "./Layout";
 import { sign_in_wrapper } from "../utils/auth";
 import { NextRouter, useRouter } from "next/router";
-import { Auth as SupaAuth } from "@supabase/ui";
+import ThirdPartyAuth from "../components/auth/third-party";
+import EmailAddr from "../components/auth/signin";
 
 let MagicLink = (): JSX.Element => {
   const [email, setEmail] = useState("");
@@ -51,8 +52,10 @@ let Auth = (): JSX.Element | any => {
             <section className="flex flex-auto py-8 px-2 text-center text-white text-4xl font-extrabold hover:italic">
               Login
             </section>
+            <EmailAddr />
+            <ThirdPartyAuth />
 
-            {!magic ? (
+            {/* {!magic ? (
               <>
                 {" "}
                 <SupaAuth
@@ -77,7 +80,7 @@ let Auth = (): JSX.Element | any => {
                   Normal Login!
                 </button>
               </>
-            )}
+            )} */}
           </>
         }
       />
