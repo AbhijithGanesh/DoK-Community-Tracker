@@ -3,8 +3,9 @@ import { supabase } from "../utils/supabase";
 import Layout from "./Layout";
 import { sign_in_wrapper } from "../utils/auth";
 import { FiGitlab } from "react-icons/fi";
+import { BiLockOpenAlt } from "react-icons/bi";
 import { FaGithubAlt, FaGoogle, FaMagic } from "react-icons/fa";
-import { NextRouter, useRouter } from "next/router";
+import { NextRouter,  useRouter } from "next/router";
 
 let MagicLink = (): JSX.Element => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ let MagicLink = (): JSX.Element => {
 let GoogleAuth = (): JSX.Element => {
   return (
     <>
-      <section className="mx-2 px-2 py-2 flex bg-gray-700 text-white font-semibold rounded-md text-lg hover:-translate-y-2">
+      <section className="mx-2 p-2 flex bg-gray-700 text-white font-semibold rounded-md text-lg hover:-translate-y-2">
         <button
           onClick={async (e) => {
             const { user, session, error } = await supabase.auth.signIn({
@@ -93,6 +94,25 @@ let GithubAuth = (): JSX.Element => {
   );
 };
 
+let SignUp = (): JSX.Element => {
+  let router: NextRouter = useRouter();
+  return (
+    <>
+      <section className="bg-gray-700 p-2 ml-2 mr-52 font-semibold rounded-md text-lg hover:-translate-y-2 flex justify-between">
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            router.push("/signup");
+          }}
+        >
+          Sign-up
+        </button>
+        <BiLockOpenAlt className="text-2xl m-2" />
+      </section>
+    </>
+  );
+};
+
 let Auth = (): JSX.Element | any => {
   const [magic, setMagic] = useState(false);
   const [password, setPassword] = useState("");
@@ -131,7 +151,7 @@ let Auth = (): JSX.Element | any => {
                     onChange={(e) => setPassword(e.target.value)}
                   ></input>
                   <button
-                    className="bg-rose-900 text-white font-bold text-xl rounded-lg m-2 py-1 px-2"
+                    className="bg-red-600 text-white font-bold text-xl rounded-lg m-2 py-1 px-2"
                     onClick={async (e) => {
                       e.preventDefault();
                       setProcess(true);
@@ -162,6 +182,7 @@ let Auth = (): JSX.Element | any => {
                   <GoogleAuth />
                   <GithubAuth />
                   <GitLabAuth />
+                  <SignUp />
                 </section>
               </>
             ) : (

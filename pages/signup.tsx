@@ -10,12 +10,12 @@ const SignUp = (): JSX.Element => {
     <Layout
       element={
         <>
-          <section className="py-8 text-white text-2xl font-semibold">
-            Sign up for a new account;
+          <section className="py-8 text-white text-2xl font-extrabold">
+            Sign up for a <i>new account </i>
           </section>
           <form>
             <input
-              className="bg-gray-300 text-black font-semibold text-2xl w-auto rounded-lg px-2 mx-4 justify center"
+              className="bg-gray-300 text-black font-semibold text-2xl w-auto rounded-lg px-2 mx-4 justify center my-2"
               type="email"
               name="email"
               placeholder="Your Email"
@@ -32,13 +32,13 @@ const SignUp = (): JSX.Element => {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button
-              className="bg-gray-700 text-white font-bold text-xl rounded-lg mx-2 p-2"
+              className="bg-rose-900 text-white font-bold text-xl rounded-lg p-2 my-2 mx-4"
               onClick={(e) => {
                 sign_up_wrapper(email, password);
                 e.preventDefault();
               }}
             >
-              signup
+              Signup
             </button>
           </form>
         </>
