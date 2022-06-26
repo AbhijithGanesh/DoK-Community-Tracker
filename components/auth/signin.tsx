@@ -4,6 +4,7 @@ import Layout from "../../pages/Layout";
 import { FaLock } from "react-icons/fa";
 import { sign_in_wrapper } from "../../utils/auth";
 import { useRouter } from "next/router";
+import { supabase } from "../../utils/supabase";
 
 const MagicLink = (): JSX.Element => {
   const [email, setEmail] = useState("");
@@ -52,21 +53,29 @@ const EmailAddr = (): JSX.Element => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <button
-            className="text-white hover:underline bg-rose-600 rounded-md p-1 mx-1"
+            className="text-black font-light hover:underline bg-white rounded-md p-1 mx-1"
             onClick={() => {
               setMagic(!magicLink);
             }}
           >
             Login with Magic Link!
           </button>
+          <button
+            className="text-black font-light hover:underline bg-white rounded-md p-1 mx-1"
+            onClick={() => {
+              router.push("/signup");
+            }}
+          >
+            Register an account!
+          </button>
           <section className="flex flex-1 justify-end">
-            <section className="bg-slate-500 flex rounded-lg hover:translate-y-0.5">
-              <FaLock className="text-white text-xl my-4 mx-2" />
+            <section className="bg-white flex rounded-lg hover:translate-y-0.5">
               <button
-                className=" text-white text-lg font-bold rounded-md lg:py-1 p-1 sm:text-md"
-                onClick={() => {
-                  sign_in_wrapper(email, password);
-                  router.push("/")
+                className=" text-black text-lg font-light rounded-md lg:py-1 p-1 mx-2 sm:text-md"
+                onClick={async (e) => {
+                  e.preventDefault();
+                  await supabase.auth.signIn({ email, password });
+                  router.push("/");
                 }}
               >
                 Login
