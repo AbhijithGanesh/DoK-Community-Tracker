@@ -35,6 +35,7 @@ const SignUp = (): JSX.Element => {
               className="bg-white text-black font-semibold text-lg rounded-lg px-2 py-1"
               onClick={(e) => {
                 sign_up_wrapper(email, password);
+
                 e.preventDefault();
               }}
             >

@@ -1,8 +1,5 @@
 import * as React from "react";
 import { useState } from "react";
-import Layout from "../../pages/Layout";
-import { FaLock } from "react-icons/fa";
-import { sign_in_wrapper } from "../../utils/auth";
 import { useRouter } from "next/router";
 import { supabase } from "../../utils/supabase";
 
@@ -19,7 +16,7 @@ const MagicLink = (): JSX.Element => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <section className="flex flex-1 justify-end">
-        <button className=" text-white text-lg font-bold rounded-md lg:py-1 p-1 sm:text-md bg-slate-500">
+        <button className=" text-black text-lg font-medium rounded-md lg:p-1 sm:text-md bg-white">
           Send Link
         </button>
       </section>
@@ -52,22 +49,24 @@ const EmailAddr = (): JSX.Element => {
             placeholder="Your password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button
-            className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1"
-            onClick={() => {
-              setMagic(!magicLink);
-            }}
-          >
-            Login with Magic Link!
-          </button>
-          <button
-            className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
-            onClick={() => {
-              router.push("/signup");
-            }}
-          >
-            Register an account!
-          </button>
+          <section className="flex flex-auto justify-evenly">
+            <button
+              className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
+              onClick={() => {
+                setMagic(!magicLink);
+              }}
+            >
+              Login with Magic Link!
+            </button>
+            <button
+              className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
+              onClick={() => {
+                router.push("/signup");
+              }}
+            >
+              Register an account!
+            </button>
+          </section>
           <section className="flex flex-1 justify-end">
             <section className="bg-white flex rounded-lg my-2 hover:translate-y-0.5">
               <button

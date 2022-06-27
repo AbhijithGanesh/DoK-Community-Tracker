@@ -74,6 +74,6 @@ export default function Home() {
       />
     );
   } else {
-    Router.push(`/profiles/${supabase.auth.user()?.id}`);
+    Router.push(`/profiles/access/${supabase.auth.user()?.id}`);
   }
 }

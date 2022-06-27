@@ -5,7 +5,6 @@ let getToken = async (email: string, password?: string) => {
     email: email,
     password: password,
   });
-  console.log(supabase.auth.user());
   if (error) {
     return error;
   } else {

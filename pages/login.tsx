@@ -55,7 +55,7 @@ let Auth = (): JSX.Element | any => {
       />
     );
   } else {
-    Router.push(`/profiles/${supabase.auth.user()?.id}`);
+    Router.push(`/profiles/access/${supabase.auth.user()?.id}`);
     return (
       <>
         <section className="bg-black"></section>

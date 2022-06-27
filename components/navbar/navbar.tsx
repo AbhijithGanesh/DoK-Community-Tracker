@@ -14,7 +14,7 @@ let Navbar = ({ element }: Props): JSX.Element => {
         <section className="navbar-center">
           <Link href="/">
             <section className="normal-case font-bold hidden text-gray-400 hover:text-white lg:flex lg:place-content-center md:flex md:place-content-center text-xl btn btn-ghost">
-              Data on Kubernetes
+              Explorer&#39;s  World
             </section>
           </Link>
         </section>

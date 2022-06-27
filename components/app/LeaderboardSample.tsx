@@ -8,8 +8,10 @@ const LeaderBoardSample = (): JSX.Element => {
         You too can become a member/contributor
       </section>
       <section className="h-0.5 w-auto bg-slate-500" />
-      <section className="pt-8 pb-2 text-white font-light sm:text-lg md:text-lg lg:text-2xl hover:translate-x-2 hover:underline">
-        <Link href="/signup">Sign up with us! </Link>
+      <section className="pt-8 pb-2 text-black font-light sm:text-lg md:text-lg lg:text-2xl hover:translate-x-2 hover:underline">
+        <section className="bg-gray-200 text-black rounded-lg w-44 p-2">
+          <Link href="/signup">Sign up with us!</Link>
+        </section>
       </section>
     </>
   );
