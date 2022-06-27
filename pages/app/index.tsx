@@ -7,7 +7,8 @@ let app = (): JSX.Element => {
       element={
         <>
           <section className="py-8 text-white text-2xl font-semibold">
-            Welcome to profile viewing section!
+            You can edit the profiles here! Here is where you will be adding
+            forms, contributions, etc.
           </section>
         </>
       }

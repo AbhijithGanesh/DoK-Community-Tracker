@@ -4,7 +4,10 @@ import Navbar from "../components/navbar/navbar";
 import Main from "../components/content/main";
 import About from "../components/content/about";
 import Challenges from "../components/content/challenges";
+import { DropDownMenu, MenuItem } from "../components/navbar/dropdown";
 import { useEffect, useState } from "react";
+import { FiLogIn } from "react-icons/fi";
+import { MdLeaderboard, MdAddTask, MdSearch } from "react-icons/md";
 import { supabase } from "../utils/supabase";
 import { NextRouter, useRouter } from "next/router";
 
@@ -31,7 +34,38 @@ export default function Home() {
       <Layout
         element={
           <>
-            <Navbar />
+            <Navbar
+              element={
+                <>
+                  <DropDownMenu
+                    items={
+                      <>
+                        <MenuItem
+                          icon={<FiLogIn />}
+                          link="/login"
+                          text="Login/SignUp"
+                        />
+                        <MenuItem
+                          icon={<MdLeaderboard />}
+                          link="/leaderboard"
+                          text="Leaderboard"
+                        />
+                        <MenuItem
+                          icon={<MdAddTask />}
+                          link="/leaderboard"
+                          text="Challenges"
+                        />
+                        <MenuItem
+                          icon={<MdSearch className="text-xl"/>}
+                          link="/app"
+                          text="Search for explorers"
+                        />
+                      </>
+                    }
+                  />
+                </>
+              }
+            />
             <Main />
             <About />
             <Challenges />

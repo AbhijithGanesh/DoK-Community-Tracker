@@ -61,7 +61,7 @@ const EmailAddr = (): JSX.Element => {
             Login with Magic Link!
           </button>
           <button
-            className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1"
+            className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
             onClick={() => {
               router.push("/signup");
             }}
@@ -69,9 +69,9 @@ const EmailAddr = (): JSX.Element => {
             Register an account!
           </button>
           <section className="flex flex-1 justify-end">
-            <section className="bg-white flex rounded-lg hover:translate-y-0.5">
+            <section className="bg-white flex rounded-lg my-2 hover:translate-y-0.5">
               <button
-                className=" text-black text-lg font-light rounded-md lg:py-1 p-1 mx-2 sm:text-md"
+                className=" text-black text-lg font-regular rounded-md lg:py-1 p-1 mx-2 sm:text-md"
                 onClick={async (e) => {
                   e.preventDefault();
                   await supabase.auth.signIn({ email, password });
