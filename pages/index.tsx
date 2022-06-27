@@ -52,7 +52,7 @@ export default function Home() {
                         />
                         <MenuItem
                           icon={<MdAddTask />}
-                          link="/leaderboard"
+                          link="/challenges"
                           text="Challenges"
                         />
                         <MenuItem

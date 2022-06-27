@@ -15,7 +15,7 @@ const SignUp = (): JSX.Element => {
           </section>
           <form>
             <input
-              className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-md px-2 mx-4 justify center my-2"
+              className="bg-gray-300 text-black font-regular text-xl w-auto rounded-md px-2 mx-4 justify center my-2"
               type="email"
               name="email"
               placeholder="Your Email"
@@ -24,7 +24,7 @@ const SignUp = (): JSX.Element => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
-              className="bg-gray-300 text-black font-regular text-2xl w-auto rounded-md px-2 mx-4 justify center"
+              className="bg-gray-300 text-black font-regular text-xl w-auto rounded-md px-2 mx-4 justify center"
               type="password"
               name="password"
               value={password}
@@ -32,7 +32,7 @@ const SignUp = (): JSX.Element => {
               onChange={(e) => setPassword(e.target.value)}
             ></input>
             <button
-              className="bg-white text-black font-regular text-xl rounded-lg px-2 py-1"
+              className="bg-white text-black font-semibold text-lg rounded-lg px-2 py-1"
               onClick={(e) => {
                 sign_up_wrapper(email, password);
                 e.preventDefault();
