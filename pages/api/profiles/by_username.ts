@@ -12,10 +12,15 @@ let ByUsername = async (
       .eq("userid", req.body?.userid!);
     res.status(200).json(data.data);
   } else if (req.method == "POST") {
-    let data = await supabase.from("Users").upsert({
-      userid: req.body?.userid!,
-      username: req.body?.username!
-    })
+    let data = await supabase
+      .from("Users")
+      .update({
+        username: req.body?.username!,
+        profile_created: true,
+      })
+      .eq("userid", req.body?.userid!);
+
+    res.status(200).json(data.data);
   } else if (req.method == "PATCH") {
     let data = await supabase.from("Users").upsert({
       username: req.body?.username!,

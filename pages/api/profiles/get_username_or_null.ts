@@ -9,7 +9,7 @@ const NullUsername = async (
     let data = await supabase
       .from("Users")
       .select("username")
-      .eq("userid", req.body?.id!);
+      .eq("userid", req.body?.userid!);
     res.status(200).json(data.data);
   } else {
     res.status(405).send("Forbidden!");
