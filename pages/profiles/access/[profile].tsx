@@ -65,8 +65,29 @@ let Profile = (): JSX.Element | void => {
             <section className="py-8 text-white font-extrabold text-2xl">
               Hello {profile}
             </section>
-            <section>
-              <ChartContainer />
+            <section className="sm:hidden md:hidden lg:block">
+              <ChartContainer
+                count={[1, 2, 3, 4, 5]}
+                size={"15px"}
+                gap={"2px"}
+                squares={5}
+              />
+            </section>
+            <section className="sm:hidden lg:hidden md:block">
+              <ChartContainer
+                count={[1, 2, 3, 4, 5]}
+                size={"10px"}
+                gap={"2px"}
+                squares={5}
+              />
+            </section>
+            <section className="hidden md:hidden sm:block">
+              <ChartContainer
+                count={[1, 2, 3, 4, 5]}
+                size={"6px"}
+                gap={"2px"}
+                squares={5}
+              />
             </section>
           </>
         }
