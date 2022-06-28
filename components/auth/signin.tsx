@@ -72,6 +72,14 @@ const EmailAddr = (): JSX.Element => {
             >
               Register an account!
             </button>
+            <button
+              className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
+              onClick={() => {
+                router.push("/resetPassword");
+              }}
+            >
+              Reset password
+            </button>
           </section>
           <section className="flex flex-1 justify-end">
             <section className="bg-white flex rounded-lg my-2 hover:translate-y-0.5">

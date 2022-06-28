@@ -1,7 +1,7 @@
 import { Menu } from "@headlessui/react";
 import { NextRouter, useRouter } from "next/router";
 import { useState } from "react";
-import { BsFillQuestionDiamondFill } from "react-icons/bs";
+import { BsBraces } from "react-icons/bs";
 import { GiSandsOfTime } from "react-icons/gi";
 import { MdLeaderboard, MdLogout } from "react-icons/md";
 import ChartContainer from "../../../components/app/heatmap";
@@ -29,7 +29,7 @@ let Profile = (): JSX.Element | void => {
                   items={
                     <>
                       <MenuItem
-                        icon={<BsFillQuestionDiamondFill />}
+                        icon={<BsBraces />}
                         link={"/challenges"}
                         text={"View Challenges"}
                       />
@@ -62,8 +62,11 @@ let Profile = (): JSX.Element | void => {
                 />
               }
             />
-            <section className="py-8 text-white font-extrabold text-2xl">
+            <section className="pt-8 pb-2 text-white font-extrabold text-2xl">
               Hello {profile}
+            </section>
+            <section className="pt-4 pb-2 px-8 text-gray-400 font-semibold text-lg">
+              Your contributions
             </section>
             <section className="sm:hidden md:hidden lg:block">
               <ChartContainer
@@ -88,6 +91,10 @@ let Profile = (): JSX.Element | void => {
                 gap={"2px"}
                 squares={5}
               />
+            </section>
+            <section className="py-8 text-white font-semibold text-xl">
+              Your badges
+              <section className="w-auto my-1 h-1 bg-slate-400" />
             </section>
           </>
         }

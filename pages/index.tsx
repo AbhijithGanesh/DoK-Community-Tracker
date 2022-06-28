@@ -71,8 +71,9 @@ export default function Home() {
   } else {
     let topLevelAsync = async () => {
       let username = await resolve_username(supabase.auth.user()?.id!);
-      console.log(username);
-      setUsername(username!.body[0].username);
+      if (username == undefined) {
+        Router.push("/profile/createProfile");
+      }
     };
     if (!loading) {
       topLevelAsync();
