@@ -17,7 +17,12 @@ const MagicLink = (): JSX.Element => {
         onChange={(e) => setEmail(e.target.value)}
       />
       <section className="flex flex-1 justify-end">
-        <button className=" text-black text-lg font-medium rounded-md lg:p-1 sm:text-md bg-white">
+        <button
+          className=" text-black text-lg font-medium rounded-md lg:p-1 sm:text-md bg-white"
+          onClick={async () => {
+            await supabase.auth.signIn({ email: email });
+          }}
+        >
           Send Link
         </button>
       </section>
