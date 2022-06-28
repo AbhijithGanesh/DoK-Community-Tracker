@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter, NextRouter } from "next/router";
 import { supabase } from "../../../utils/supabase";
 import Layout from "../../Layout";
 import Navbar from "../../../components/navbar/navbar";
@@ -10,11 +10,11 @@ import { GiSandsOfTime } from "react-icons/gi";
 import { Menu } from "@headlessui/react";
 import { check_login } from "../../../utils/auth";
 
-let Profile = (): JSX.Element => {
+let Profile = (): JSX.Element | void => {
   const Router = useRouter();
   const { profile } = Router.query;
   const [loading, setloading] = useState(false);
-  const router = useRouter();
+  const router: NextRouter = useRouter();
 
   if (check_login()) {
     return (
@@ -63,13 +63,13 @@ let Profile = (): JSX.Element => {
             <section className="py-8 text-white font-extrabold text-2xl">
               Hello {profile}
             </section>
+            
           </>
         }
       />
     );
   } else {
     router.push("/login");
-    return <></>;
   }
 };
 
