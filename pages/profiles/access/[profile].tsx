@@ -1,14 +1,16 @@
+import { Menu } from "@headlessui/react";
+import { NextRouter, useRouter } from "next/router";
 import { useState } from "react";
-import { useRouter, NextRouter } from "next/router";
+import { BsFillQuestionDiamondFill } from "react-icons/bs";
+import { GiSandsOfTime } from "react-icons/gi";
+import { MdLeaderboard, MdLogout } from "react-icons/md";
+import ChartContainer from "../../../components/app/heatmap";
+import { DropDownMenu, MenuItem } from "../../../components/navbar/dropdown";
+import Navbar from "../../../components/navbar/navbar";
+import { check_login } from "../../../utils/auth";
+import RouterEffect from "../../../utils/routerUtil";
 import { supabase } from "../../../utils/supabase";
 import Layout from "../../Layout";
-import Navbar from "../../../components/navbar/navbar";
-import { DropDownMenu, MenuItem } from "../../../components/navbar/dropdown";
-import { BsFillQuestionDiamondFill } from "react-icons/bs";
-import { MdLeaderboard, MdLogout } from "react-icons/md";
-import { GiSandsOfTime } from "react-icons/gi";
-import { Menu } from "@headlessui/react";
-import { check_login } from "../../../utils/auth";
 
 let Profile = (): JSX.Element | void => {
   const Router = useRouter();
@@ -63,13 +65,15 @@ let Profile = (): JSX.Element | void => {
             <section className="py-8 text-white font-extrabold text-2xl">
               Hello {profile}
             </section>
-            
+            <section>
+              <ChartContainer />
+            </section>
           </>
         }
       />
     );
   } else {
-    router.push("/login");
+    RouterEffect();
   }
 };
 
