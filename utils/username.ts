@@ -10,7 +10,7 @@ let check_boolean_username = async (username: string) => {
     }
   );
   let resolution = await data.json();
-  if (resolution[0]?.username) {
+  if (resolution![0]?.username) {
     return true;
   } else {
     return false;

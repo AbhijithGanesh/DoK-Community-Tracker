@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import resolve_username from "../../utils/resolveUsername";
 import { supabase } from "../../utils/supabase";
 
 const MagicLink = (): JSX.Element => {
@@ -74,7 +75,8 @@ const EmailAddr = (): JSX.Element => {
                 onClick={async (e) => {
                   e.preventDefault();
                   await supabase.auth.signIn({ email, password });
-                  router.push("/");
+                  let username = await resolve_username();
+                  router.push(`/profiles/access/${username.body[0].username}`);
                 }}
               >
                 Login

@@ -16,4 +16,12 @@ let sign_in_wrapper = async (email: string, password?: string) => {
   return { user, session, error };
 };
 
-export { sign_up_wrapper, sign_in_wrapper };
+let check_login = () => {
+  if (supabase.auth.user()) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export { sign_up_wrapper, sign_in_wrapper, check_login };

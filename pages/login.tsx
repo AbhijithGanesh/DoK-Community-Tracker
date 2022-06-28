@@ -5,9 +5,11 @@ import { sign_in_wrapper } from "../utils/auth";
 import { NextRouter, useRouter } from "next/router";
 import ThirdPartyAuth from "../components/auth/third-party";
 import EmailAddr from "../components/auth/signin";
+import resolve_username from "../utils/resolveUsername";
 
 let MagicLink = (): JSX.Element => {
   const [email, setEmail] = useState("");
+
   return (
     <>
       <section className="text-white text-2xl">
@@ -39,6 +41,7 @@ let MagicLink = (): JSX.Element => {
 let Auth = (): JSX.Element | any => {
   const Router: NextRouter = useRouter();
   const [loggedIn, setLoggedIn] = useState(supabase.auth.user() ? true : false);
+  const [username, setUsername] = useState("");
 
   if (!loggedIn) {
     return (
@@ -55,7 +58,8 @@ let Auth = (): JSX.Element | any => {
       />
     );
   } else {
-    Router.push(`/profiles/access/${supabase.auth.user()?.id}`);
+    setLoggedIn(true);
+    Router.push(`/`);
     return (
       <>
         <section className="bg-black"></section>

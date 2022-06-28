@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 
 let CreateProfile = (): JSX.Element => {
   const [input, setInput] = useState("");
+  const Router = useRouter();
   return (
     <Layout
       element={
@@ -40,6 +41,7 @@ let CreateProfile = (): JSX.Element => {
                     input,
                     supabase.auth.user()?.id!
                   );
+                  Router.push("/profiles/data-on-kubernetes");
                 }}
               >
                 <MdSend className="text-2xl m-2 hover:rounded-full hover:p-1 hover:bg-slate-600 hover:text-white" />
@@ -52,7 +54,7 @@ let CreateProfile = (): JSX.Element => {
   );
 };
 
-let ProfileMethod = (): JSX.Element => {
+let ProfileMethod = (): JSX.Element | void => {
   const [usernameExists, setUsernameExists] = useState(true);
   const [profileCreate, setProfileCreate] = useState(false);
   const Router = useRouter();
@@ -70,14 +72,12 @@ let ProfileMethod = (): JSX.Element => {
 
   if (!usernameExists) {
     default_user_create(supabase.auth.user()?.id!);
-    console.log(["Default create was called here!", profileCreate]);
   }
 
   if (!profileCreate) {
     return <CreateProfile />;
   } else {
-    Router.push("/profiles/challenges");
-    return <></>;
+    Router.push("/profiles/data-on-kubernetes");
   }
 };
 

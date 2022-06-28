@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { supabase } from "../../../utils/supabase";
 import Layout from "../../Layout";
 
 let Profile = (): JSX.Element => {
   const Router = useRouter();
-  const [username, setusername] = useState("");
   const { profile } = Router.query;
+  const [username, setusername] = useState(profile);
   const [loading, setloading] = useState(false);
 
   return (
