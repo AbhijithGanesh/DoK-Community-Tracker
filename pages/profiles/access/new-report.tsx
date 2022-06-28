@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
-import { supabase } from "../../../utils/supabase";
 import Layout from "../../Layout";
 import Navbar from "../../../components/navbar/navbar";
+import { useRouter } from "next/router";
+import { supabase } from "../../../utils/supabase";
 import { DropDownMenu, MenuItem } from "../../../components/navbar/dropdown";
 import { BsFillQuestionDiamondFill } from "react-icons/bs";
 import { MdLeaderboard, MdLogout } from "react-icons/md";
@@ -10,10 +9,7 @@ import { GiSandsOfTime } from "react-icons/gi";
 import { Menu } from "@headlessui/react";
 import { check_login } from "../../../utils/auth";
 
-let Profile = (): JSX.Element => {
-  const Router = useRouter();
-  const { profile } = Router.query;
-  const [loading, setloading] = useState(false);
+let SubmitChallenge = (): JSX.Element => {
   const router = useRouter();
 
   if (check_login()) {
@@ -33,7 +29,7 @@ let Profile = (): JSX.Element => {
                       />
                       <MenuItem
                         icon={<GiSandsOfTime />}
-                        link={"./new-report"}
+                        link={"#"}
                         text={"Submit a new report"}
                       />
                       <MenuItem
@@ -60,8 +56,8 @@ let Profile = (): JSX.Element => {
                 />
               }
             />
-            <section className="py-8 text-white font-extrabold text-2xl">
-              Hello {profile}
+            <section className="text-white text-xl font-semibold py-8">
+              Submit a new challenge
             </section>
           </>
         }
@@ -73,4 +69,4 @@ let Profile = (): JSX.Element => {
   }
 };
 
-export default Profile;
+export default SubmitChallenge;

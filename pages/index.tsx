@@ -15,6 +15,7 @@ import resolve_username from "../utils/resolveUsername";
 export default function Home() {
   const Router: NextRouter = useRouter();
   const [session, setSession] = useState({});
+  const [loading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(check_login());
   const [username, setUsername] = useState();
   useEffect(() => {
@@ -73,9 +74,12 @@ export default function Home() {
       console.log(username);
       setUsername(username!.body[0].username);
     };
-    topLevelAsync();
-    console.log([username, supabase.auth.user()?.id!]);
-
-    Router.push(`/profiles/access/${username}`);
+    if (!loading) {
+      topLevelAsync();
+      console.log([username, supabase.auth.user()?.id!]);
+      if (username) {
+        Router.push(`/profiles/access/${username}`);
+      }
+    }
   }
 }
