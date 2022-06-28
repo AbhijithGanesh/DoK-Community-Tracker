@@ -8,6 +8,7 @@ import { MdLeaderboard, MdLogout } from "react-icons/md";
 import { GiSandsOfTime } from "react-icons/gi";
 import { Menu } from "@headlessui/react";
 import { check_login } from "../../../utils/auth";
+import RouterEffect from "../../../utils/routerUtil";
 
 let SubmitChallenge = (): JSX.Element => {
   const router = useRouter();
@@ -64,7 +65,7 @@ let SubmitChallenge = (): JSX.Element => {
       />
     );
   } else {
-    router.push("/login");
+    RouterEffect()
     return <></>;
   }
 };
