@@ -1,3 +1,4 @@
+import { NextRouter, Router, useRouter } from "next/router";
 import { supabase } from "../utils/supabase";
 
 type Props = {
@@ -6,6 +7,7 @@ type Props = {
 };
 
 let Provider = ({ name, content }: Props): JSX.Element => {
+  const router: NextRouter = useRouter();
   switch (name) {
     case "GitHub":
       return (
@@ -47,6 +49,21 @@ let Provider = ({ name, content }: Props): JSX.Element => {
           >
             {content}
           </button>
+        </>
+      );
+
+    case "Us":
+      return (
+        <>
+          <>
+            <button
+              onClick={async () => {
+                router.push("/signup");
+              }}
+            >
+              {content}
+            </button>
+          </>
         </>
       );
     default:

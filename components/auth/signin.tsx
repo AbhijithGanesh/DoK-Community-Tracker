@@ -55,25 +55,9 @@ const EmailAddr = (): JSX.Element => {
             placeholder="Your password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <section className="flex flex-auto justify-evenly">
+          <section className="flex flex-auto justify-end">
             <button
-              className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
-              onClick={() => {
-                setMagic(!magicLink);
-              }}
-            >
-              Login with Magic Link!
-            </button>
-            <button
-              className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
-              onClick={() => {
-                router.push("/signup");
-              }}
-            >
-              Register an account!
-            </button>
-            <button
-              className="text-black font-semibold hover:underline bg-white rounded-md p-1 mx-1 my-2"
+              className="text-white hover:text-cyan-600 font-semibold hover:underline rounded-md p-1 mx-1 my-2"
               onClick={() => {
                 router.push("/resetPassword");
               }}
@@ -81,10 +65,20 @@ const EmailAddr = (): JSX.Element => {
               Reset password
             </button>
           </section>
-          <section className="flex flex-1 justify-end">
-            <section className="bg-white flex rounded-lg my-2 hover:translate-y-0.5">
+          <button
+            className="text-white font-semibold hover:underline hover:text-cyan-600"
+            onClick={() => {
+              setMagic(!magicLink);
+            }}
+          >
+            Login with Magic Link!
+          </button>
+          <br />
+
+          <section className="flex flex-1">
+            <section className="bg-cyan-600 w-full flex justify-center rounded-lg my-2 hover:translate-y-0.5">
               <button
-                className=" text-black text-lg font-regular rounded-md lg:py-1 p-1 mx-2 sm:text-md"
+                className="text-white text-lg font-bold rounded-md lg:py-1 p-1 mx-2 sm:text-md"
                 onClick={async (e) => {
                   e.preventDefault();
                   await supabase.auth.signIn({ email, password });
@@ -107,10 +101,10 @@ const EmailAddr = (): JSX.Element => {
   } else {
     return (
       <>
-        <section className="bg-white  w-full h-0.5 my-4" />
+        <section className="bg-white w-full h-0.5 my-4" />
         <MagicLink />{" "}
         <button
-          className="text-white hover:underline bg-green-600 rounded-md p-2 text-bold"
+          className="text-white bg-teal-500 hover:underline  rounded-md p-2 text-bold"
           onClick={() => {
             setMagic(!magicLink);
           }}

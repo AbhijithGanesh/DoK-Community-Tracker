@@ -1,5 +1,6 @@
 import Layout from "../../pages/Layout";
 import { FaGithub, FaGitlab, FaGoogle } from "react-icons/fa";
+import { ImProfile } from "react-icons/im";
 import Provider from "../../utils/providers";
 
 type SocialAuth = {
@@ -10,8 +11,8 @@ type SocialAuth = {
 const SocialAuth = ({ name, icon }: SocialAuth): JSX.Element => {
   return (
     <>
-      <section className="my-2 bg-white flex place-items-center justify-center rounded-md hover:transform-cpu hover:-translate-y-1">
-        <section className="text-2xl py-2 px-2">{icon}</section>
+      <section className="my-2 bg-white flex place-items-center justify-center rounded-md hover:transform-cpu hover:-translate-y-1  text-black hover:font-bold">
+        <section className="text-2xl py-2 px-2 ">{icon}</section>
         <Provider
           name={name}
           content={
@@ -30,18 +31,11 @@ const ThirdPartyAuth = (): JSX.Element => {
     <Layout
       element={
         <>
-          <SocialAuth
-            name="GitHub"
-            icon={<FaGithub className="text-black" />}
-          />
-          <SocialAuth
-            name="Google"
-            icon={<FaGoogle className=" text-black" />}
-          />
-          <SocialAuth
-            name="GitLab"
-            icon={<FaGitlab className="text-black" />}
-          />
+          <SocialAuth name="GitHub" icon={<FaGithub />} />
+          <SocialAuth name="Google" icon={<FaGoogle />} />
+          <SocialAuth name="GitLab" icon={<FaGitlab />} />
+          <SocialAuth name="Us" icon={<ImProfile />} />
+          
         </>
       }
     />

@@ -23,7 +23,7 @@ const ForgetPassword = (): JSX.Element => {
 
           <section className="flex flex-1 justify-evenly">
             <button
-              className="text-white hover:underline bg-green-600 rounded-md p-2 text-bold"
+              className="text-white hover:underline bg-emerald-500 rounded-md p-2 text-bold"
               onClick={() => {
                 router.push("/login");
               }}
