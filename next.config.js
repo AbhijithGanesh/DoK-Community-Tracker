@@ -11,6 +11,11 @@ const nextConfig = {
             key: "Access-Control-Allow-Origin",
             value: "https://dok-community-tracker.vercel.app/",
           },
+          {
+            key: "Access-Control-Allow-Credentials",
+            value:
+              "https://dok-community-tracker.vercel.appapi/profiles/get_username_or_null",
+          },
         ],
       },
     ];
