@@ -38,20 +38,22 @@ let SubmitChallenge = (): JSX.Element => {
                         link={"/leaderboard"}
                         text={"View Leaderboard"}
                       />
-                      <Menu.Item>
-                        <button
-                          className="flex flex-auto gap-2 text-black bg-white hover:bg-emerald-300 w-full items-center rounded-md p-2 text-md"
-                          onClick={async () => {
-                            await supabase.auth.signOut();
-                            router.push("/");
-                          }}
-                        >
-                          <section className="m-1">
-                            <MdLogout />
-                          </section>
-                          Logout!
-                        </button>
-                      </Menu.Item>
+                      <Menu>
+                        <Menu.Item>
+                          <button
+                            className="flex flex-auto gap-2 text-black bg-white hover:bg-emerald-300 w-full items-center rounded-md p-2 text-md"
+                            onClick={async () => {
+                              await supabase.auth.signOut();
+                              router.push("/");
+                            }}
+                          >
+                            <section className="m-1">
+                              <MdLogout />
+                            </section>
+                            Logout!
+                          </button>
+                        </Menu.Item>
+                      </Menu>
                     </>
                   }
                 />
