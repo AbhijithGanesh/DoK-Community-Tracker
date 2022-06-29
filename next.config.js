@@ -9,7 +9,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://dok-community-tracker.vercel.app",
+            value: "https://dok-community-tracker.vercel.app/",
           },
         ],
       },
