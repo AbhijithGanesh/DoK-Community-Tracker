@@ -14,9 +14,12 @@ let Provider = ({ name, content }: Props): JSX.Element => {
         <>
           <button
             onClick={async () => {
-              const { user, session, error } = await supabase.auth.signIn({
-                provider: `github`,
-              });
+              const { user, session, error } = await supabase.auth.signIn(
+                {
+                  provider: `github`,
+                },
+                { redirectTo: "./profiles/" }
+              );
             }}
           >
             {content}
@@ -28,9 +31,12 @@ let Provider = ({ name, content }: Props): JSX.Element => {
         <>
           <button
             onClick={async () => {
-              const { user, session, error } = await supabase.auth.signIn({
-                provider: `gitlab`,
-              });
+              const { user, session, error } = await supabase.auth.signIn(
+                {
+                  provider: `gitlab`,
+                },
+                { redirectTo: "./profiles/" }
+              );
             }}
           >
             {content}
@@ -42,9 +48,12 @@ let Provider = ({ name, content }: Props): JSX.Element => {
         <>
           <button
             onClick={async () => {
-              const { user, session, error } = await supabase.auth.signIn({
-                provider: `google`,
-              });
+              const { user, session, error } = await supabase.auth.signIn(
+                {
+                  provider: `google`,
+                },
+                { redirectTo: "http://localhost:3000/profiles/" }
+              );
             }}
           >
             {content}

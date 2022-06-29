@@ -2,6 +2,7 @@ import { Menu } from "@headlessui/react";
 import { NextRouter, useRouter } from "next/router";
 import { useState } from "react";
 import { BsBraces } from "react-icons/bs";
+import { FaUserTie } from "react-icons/fa";
 import { GiSandsOfTime } from "react-icons/gi";
 import { MdLeaderboard, MdLogout } from "react-icons/md";
 import ChartContainer from "../../../components/app/heatmap";
@@ -32,6 +33,11 @@ let Profile = (): JSX.Element | void => {
                         icon={<BsBraces />}
                         link={"/challenges"}
                         text={"View Challenges"}
+                      />
+                      <MenuItem
+                        icon={<FaUserTie />}
+                        link="/"
+                        text={"My Profile"}
                       />
                       <MenuItem
                         icon={<GiSandsOfTime />}
@@ -68,7 +74,7 @@ let Profile = (): JSX.Element | void => {
             <section className="pt-4 pb-2 px-8 text-gray-400 font-semibold text-lg">
               Your contributions
             </section>
-            <section className="sm:hidden md:hidden lg:block">
+            <section className="hidden lg:block sm:hidden md:hidden">
               <ChartContainer
                 count={[1, 2, 3, 4, 5]}
                 size={"15px"}
@@ -76,7 +82,7 @@ let Profile = (): JSX.Element | void => {
                 squares={5}
               />
             </section>
-            <section className="sm:hidden lg:hidden md:block">
+            <section className="hidden md:block lg:hidden sm:hidden">
               <ChartContainer
                 count={[1, 2, 3, 4, 5]}
                 size={"10px"}
@@ -84,7 +90,7 @@ let Profile = (): JSX.Element | void => {
                 squares={5}
               />
             </section>
-            <section className="lg:hidden md:hidden sm:block">
+            <section className="hidden sm:block lg:hidden md:hidden">
               <ChartContainer
                 count={[1, 2, 3, 4, 5]}
                 size={"6px"}

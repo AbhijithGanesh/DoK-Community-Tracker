@@ -90,9 +90,7 @@ const EmailAddr = (): JSX.Element => {
                   }
                   let username = await resolve_username();
                   if (username.data[0]) {
-                    router.push(
-                      `/profiles/access/${username.body[0].username}`
-                    );
+                    router.push(`/profiles/`);
                   } else {
                     console.log(username.data[0]);
                     router.push(`/profiles/createProfile`);
