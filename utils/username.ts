@@ -1,6 +1,6 @@
 let check_boolean_username = async (username: string) => {
   let data = await fetch(
-    `http://dok-community-tracker.vercel.app/api/profiles/get_username_or_null`,
+    `https://dok-community-tracker.vercel.appapi/profiles/get_username_or_null`,
     {
       body: JSON.stringify({ userid: username }),
       method: "PUT",
@@ -20,7 +20,7 @@ let check_boolean_username = async (username: string) => {
 
 let default_user_create = async (userid: string, username: string) => {
   let data = await fetch(
-    `http://dok-community-tracker.vercel.app/api/profiles/empty_user_create`,
+    `https://dok-community-tracker.vercel.appapi/profiles/empty_user_create`,
     {
       body: JSON.stringify({ userid: userid, username: username }),
       method: "POST",
@@ -39,7 +39,7 @@ let default_user_create = async (userid: string, username: string) => {
 
 let profile_established_boolean = async (userid: string) => {
   let data = await fetch(
-    `http://dok-community-tracker.vercel.app/api/profiles/profile_established`,
+    `https://dok-community-tracker.vercel.appapi/profiles/profile_established`,
     {
       body: JSON.stringify({ userid: userid }),
       method: "PUT",
@@ -57,7 +57,7 @@ let profile_established_boolean = async (userid: string) => {
 };
 
 let postUsername = async (username: string, userid: string) => {
-  let data = await fetch(`http://dok-community-tracker.vercel.app/api/profiles/by_username`, {
+  let data = await fetch(`https://dok-community-tracker.vercel.appapi/profiles/by_username`, {
     body: JSON.stringify({ userid: userid, username: username }),
     method: "POST",
     headers: {
