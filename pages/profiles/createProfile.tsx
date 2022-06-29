@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Layout from "../Layout";
 import { supabase } from "../../utils/supabase";
 import { FiUserPlus } from "react-icons/fi";
@@ -11,8 +11,19 @@ import {
 } from "../../utils/username";
 import { useRouter } from "next/router";
 
+let ForwardMethod = () => {
+  const Router = useRouter();
+  useEffect(() => {
+    return () => {
+      Router.push("/");
+    };
+  }, [Router]);
+  return <></>;
+};
+
 let CreateProfile = (): JSX.Element => {
   const [input, setInput] = useState("");
+  const [Conflict, setConflict] = useState(false);
   const Router = useRouter();
   return (
     <Layout
@@ -41,13 +52,26 @@ let CreateProfile = (): JSX.Element => {
                     input,
                     supabase.auth.user()?.id!
                   );
-                  Router.push("/");
+                  if (res.status == 409) {
+                    setConflict(true);
+                  } else {
+                    Router.push("/");
+                  }
                 }}
               >
                 <MdSend className="text-2xl m-2 hover:rounded-full hover:p-1 hover:bg-slate-600 hover:text-white" />
               </button>
             </section>
           </form>
+          {Conflict ? (
+            <>
+              <section className="text-red-600 font-semibold text-xl">
+                Username already exists!
+              </section>
+            </>
+          ) : (
+            <></>
+          )}
         </>
       }
     />

@@ -11,7 +11,7 @@ type SocialAuth = {
 const SocialAuth = ({ name, icon }: SocialAuth): JSX.Element => {
   return (
     <>
-      <section className="my-2 bg-white flex place-items-center justify-center rounded-md hover:transform-cpu hover:-translate-y-1  text-black hover:font-bold">
+      <section className="my-2 bg-white flex place-items-center justify-center rounded-md hover:transform-cpu hover:-translate-y-1  text-black hover:font-semibold">
         <section className="text-2xl py-2 px-2 ">{icon}</section>
         <Provider
           name={name}
