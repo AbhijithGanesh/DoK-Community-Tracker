@@ -18,9 +18,9 @@ let ByUsername = async (
         username: req.body?.username!,
         profile_created: true,
       })
-      .eq("userid", req.body?.userid!);
+      .eq( "userid",req.body?.userid! );
 
-    res.status(200).json(data.data);
+    res.status(200).json(data);
   } else if (req.method == "PATCH") {
     let data = await supabase.from("Users").upsert({
       username: req.body?.username!,

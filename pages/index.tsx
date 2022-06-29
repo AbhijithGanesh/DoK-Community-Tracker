@@ -11,6 +11,7 @@ import { supabase } from "../utils/supabase";
 import { NextRouter, useRouter } from "next/router";
 import { check_login } from "../utils/auth";
 import resolve_username from "../utils/resolveUsername";
+import { default_user_create } from "../utils/username";
 
 export default function Home() {
   let null_username: string = "";
@@ -71,26 +72,12 @@ export default function Home() {
       />
     );
   } else {
-    let topLevelAsync = async () => {
-      let id: string = await supabase.auth.user()?.id!;
-      let name = await resolve_username(id);
-      if (name.data[0]!.username == undefined) {
+    resolve_username(supabase.auth.user()?.id!).then((res) => {
+      if (res.body[0].username == supabase.auth.user()?.id!) {
         Router.push("/profiles/createProfile");
-        setUsername("If was called");
       } else {
-        setUsername(name.data[0]!.username);
+        Router.push(`/profiles/access/${res.body[0].username}`);
       }
-    };
-    if (!loading) {
-      topLevelAsync();
-      setLoading(true);
-    }
-    
-    if (username != "If was called") {
-      console.log(username);
-      Router.push(`/profiles/access/${username}`);
-    } else {
-      Router.push("/profiles/createProfile");
-    }
+    });
   }
 }

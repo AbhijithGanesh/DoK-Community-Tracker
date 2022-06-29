@@ -36,6 +36,7 @@ let CreateProfile = (): JSX.Element => {
               />
               <button
                 onClick={async (e) => {
+                  e.preventDefault();
                   let res = await postUsername(
                     input,
                     supabase.auth.user()?.id!
@@ -70,7 +71,7 @@ let ProfileMethod = (): JSX.Element | void => {
   topLevelAsync();
 
   if (!usernameExists) {
-    default_user_create(supabase.auth.user()?.id!);
+    default_user_create(supabase.auth.user()?.id!, supabase.auth.user()?.id!);
   }
 
   if (!profileCreate) {

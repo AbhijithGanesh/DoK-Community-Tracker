@@ -1,6 +1,6 @@
 let check_boolean_username = async (username: string) => {
   let data = await fetch(
-    `http://dok-community-tracker.vercel.app/api/profiles/get_username_or_null`,
+    `http://localhost:3000/api/profiles/get_username_or_null`,
     {
       body: JSON.stringify({ userid: username }),
       method: "PUT",
@@ -10,7 +10,7 @@ let check_boolean_username = async (username: string) => {
     }
   );
   let resolution = await data.json();
-  
+
   if (resolution![0]?.username) {
     return true;
   } else {
@@ -18,11 +18,11 @@ let check_boolean_username = async (username: string) => {
   }
 };
 
-let default_user_create = async (userid: string) => {
+let default_user_create = async (userid: string, username: string) => {
   let data = await fetch(
-    `http://dok-community-tracker.vercel.app/api/profiles/empty_user_create`,
+    `http://localhost:3000/api/profiles/empty_user_create`,
     {
-      body: JSON.stringify({ userid: userid, username: userid }),
+      body: JSON.stringify({ userid: userid, username: username }),
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -39,7 +39,7 @@ let default_user_create = async (userid: string) => {
 
 let profile_established_boolean = async (userid: string) => {
   let data = await fetch(
-    `http://dok-community-tracker.vercel.app/api/profiles/profile_established`,
+    `http://localhost:3000/api/profiles/profile_established`,
     {
       body: JSON.stringify({ userid: userid }),
       method: "PUT",
@@ -56,8 +56,8 @@ let profile_established_boolean = async (userid: string) => {
   }
 };
 
-let postUsername = async (username: string, userid: string): Promise<void> => {
-  let data = await fetch(`http://dok-community-tracker.vercel.app/api/profiles/by_username`, {
+let postUsername = async (username: string, userid: string) => {
+  let data = await fetch(`http://localhost:3000/api/profiles/by_username`, {
     body: JSON.stringify({ userid: userid, username: username }),
     method: "POST",
     headers: {
@@ -65,6 +65,7 @@ let postUsername = async (username: string, userid: string): Promise<void> => {
     },
   });
   let resolution = await data.json();
+  return resolution
 };
 
 export {
