@@ -84,7 +84,7 @@ let Profile = (): JSX.Element | void => {
                 squares={5}
               />
             </section>
-            <section className="hidden md:hidden sm:block">
+            <section className="lg:hidden md:hidden sm:block">
               <ChartContainer
                 count={[1, 2, 3, 4, 5]}
                 size={"6px"}

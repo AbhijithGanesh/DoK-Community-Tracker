@@ -81,7 +81,13 @@ const EmailAddr = (): JSX.Element => {
                 className="text-white text-lg font-bold rounded-md lg:py-1 p-1 mx-2 sm:text-md"
                 onClick={async (e) => {
                   e.preventDefault();
-                  await supabase.auth.signIn({ email, password });
+                  let { session, error } = await supabase.auth.signIn({
+                    email,
+                    password,
+                  });
+                  if (error) {
+                    alert("You have enterred Incorrect password");
+                  }
                   let username = await resolve_username();
                   if (username.data[0]) {
                     router.push(

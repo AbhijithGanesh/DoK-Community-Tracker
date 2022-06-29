@@ -22,7 +22,7 @@ let CreateProfile = (): JSX.Element => {
             Hello User!
           </section>
           <section className="py-2 text-slate-200 italic font-regular text-xl translate-x-4">
-            You need to register before continuing
+            You have to register before continuing
           </section>
           <section className="mt-4 h-0.5 w-full bg-slate-200" />
           <form>

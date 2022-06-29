@@ -60,18 +60,6 @@ let SubmitChallenge = (): JSX.Element => {
             <section className="text-white text-xl font-semibold py-8">
               Submit a new challenge
             </section>
-            <form>
-              <input
-                className="bg-white flex flex-1 w-full rounded-md px-2 text-gray-600 font-semibold"
-                type="text"
-                placeholder="Title"
-              />
-              <input
-                className="bg-white flex flex-1 w-full rounded-md text-gray-600 font-semibold py-16 my-4 px-2"
-                type="text"
-                placeholder="Your Description"
-              />
-            </form>
           </>
         }
       />

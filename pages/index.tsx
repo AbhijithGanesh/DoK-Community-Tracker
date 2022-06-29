@@ -17,9 +17,7 @@ export default function Home() {
   let null_username: string = "";
   const Router: NextRouter = useRouter();
   const [session, setSession] = useState({});
-  const [loading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(check_login());
-  const [username, setUsername] = useState(null_username);
 
   useEffect(() => {
     if (sessionStorage.getItem("Session")) {
