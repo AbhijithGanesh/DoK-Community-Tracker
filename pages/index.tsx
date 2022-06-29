@@ -13,11 +13,13 @@ import { check_login } from "../utils/auth";
 import resolve_username from "../utils/resolveUsername";
 
 export default function Home() {
+  let null_username: string = "";
   const Router: NextRouter = useRouter();
   const [session, setSession] = useState({});
   const [loading, setLoading] = useState(false);
   const [redirect, setRedirect] = useState(check_login());
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState(null_username);
+
   useEffect(() => {
     if (sessionStorage.getItem("Session")) {
       setSession(sessionStorage.getItem("Session")!);
@@ -70,17 +72,25 @@ export default function Home() {
     );
   } else {
     let topLevelAsync = async () => {
-      let username = await resolve_username(supabase.auth.user()?.id!);
-      if (username == undefined) {
-        Router.push("/profile/createProfile");
+      let id: string = await supabase.auth.user()?.id!;
+      let name = await resolve_username(id);
+      if (name.data[0]!.username == undefined) {
+        Router.push("/profiles/createProfile");
+        setUsername("If was called");
+      } else {
+        setUsername(name.data[0]!.username);
       }
     };
     if (!loading) {
       topLevelAsync();
-      console.log([username, supabase.auth.user()?.id!]);
-      if (username) {
-        Router.push(`/profiles/access/${username}`);
-      }
+      setLoading(true);
+    }
+    
+    if (username != "If was called") {
+      console.log(username);
+      Router.push(`/profiles/access/${username}`);
+    } else {
+      Router.push("/profiles/createProfile");
     }
   }
 }

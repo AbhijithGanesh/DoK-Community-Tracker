@@ -83,7 +83,14 @@ const EmailAddr = (): JSX.Element => {
                   e.preventDefault();
                   await supabase.auth.signIn({ email, password });
                   let username = await resolve_username();
-                  router.push(`/profiles/access/${username.body[0].username}`);
+                  if (username.data[0]) {
+                    router.push(
+                      `/profiles/access/${username.body[0].username}`
+                    );
+                  } else {
+                    console.log(username.data[0]);
+                    router.push(`/profiles/createProfile`);
+                  }
                 }}
               >
                 Login
@@ -102,7 +109,7 @@ const EmailAddr = (): JSX.Element => {
     return (
       <>
         <section className="bg-white w-full h-0.5 my-4" />
-        <MagicLink />{" "}
+        <MagicLink />
         <button
           className="text-white bg-teal-500 hover:underline  rounded-md p-2 text-bold"
           onClick={() => {

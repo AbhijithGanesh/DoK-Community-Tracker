@@ -5,7 +5,6 @@ import { sign_in_wrapper } from "../utils/auth";
 import { NextRouter, useRouter } from "next/router";
 import ThirdPartyAuth from "../components/auth/third-party";
 import EmailAddr from "../components/auth/signin";
-import resolve_username from "../utils/resolveUsername";
 
 let MagicLink = (): JSX.Element => {
   const [email, setEmail] = useState("");

@@ -77,7 +77,7 @@ let ProfileMethod = (): JSX.Element | void => {
   if (!profileCreate) {
     return <CreateProfile />;
   } else {
-    Router.push("/profiles/data-on-kubernetes");
+    Router.push("/");
   }
 };
 
