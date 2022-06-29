@@ -14,7 +14,6 @@ import resolve_username from "../utils/resolveUsername";
 import { default_user_create } from "../utils/username";
 
 export default function Home() {
-  let null_username: string = "";
   const Router: NextRouter = useRouter();
   const [session, setSession] = useState({});
   const [redirect, setRedirect] = useState(check_login());
@@ -71,10 +70,18 @@ export default function Home() {
     );
   } else {
     resolve_username(supabase.auth.user()?.id!).then((res) => {
-      if (res.body[0].username == supabase.auth.user()?.id!) {
+      if (res.body[0]?.username == supabase.auth.user()?.id!) {
         Router.push("/profiles/createProfile");
+      } else if (res.data.length == 0) {
+        default_user_create(
+          supabase.auth.user()?.id!,
+          supabase.auth.user()?.id!
+        );
+        Router.push("/profiles/createProfile");
+      } else if (res.body[0]?.username) {
+        Router.push(`/profiles/access/${res.body[0]?.username}`);
       } else {
-        Router.push(`/profiles/access/${res.body[0].username}`);
+        console.log();
       }
     });
   }
