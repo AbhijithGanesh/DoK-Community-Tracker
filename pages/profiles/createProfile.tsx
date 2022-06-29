@@ -36,12 +36,11 @@ let CreateProfile = (): JSX.Element => {
               />
               <button
                 onClick={async (e) => {
-                  e.preventDefault();
                   let res = await postUsername(
                     input,
                     supabase.auth.user()?.id!
                   );
-                  Router.push("/profiles/data-on-kubernetes");
+                  Router.push("/");
                 }}
               >
                 <MdSend className="text-2xl m-2 hover:rounded-full hover:p-1 hover:bg-slate-600 hover:text-white" />
