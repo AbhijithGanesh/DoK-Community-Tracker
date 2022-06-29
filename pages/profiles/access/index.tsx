@@ -1,4 +1,4 @@
-import { MenuItem } from "../../../components/navbar/dropdown";
+import { DropDownMenu, MenuItem } from "../../../components/navbar/dropdown";
 import { Menu } from "@headlessui/react";
 import Navbar from "../../../components/navbar/navbar";
 import Layout from "../../Layout";
@@ -17,33 +17,42 @@ let Handler = () => {
           <Navbar
             element={
               <>
-                <MenuItem icon={<FaUserTie />} text="my-profile" link="/" />
-                <MenuItem
-                  icon={<GiSandsOfTime />}
-                  link={"./new-report"}
-                  text={"Submit a new report"}
+                <DropDownMenu
+                  items={
+                    <>
+                      {" "}
+                      <MenuItem
+                        icon={<FaUserTie />}
+                        text="my-profile"
+                        link="/"
+                      />
+                      <MenuItem
+                        icon={<GiSandsOfTime />}
+                        link={"./new-report"}
+                        text={"Submit a new report"}
+                      />
+                      <MenuItem
+                        icon={<MdLeaderboard />}
+                        link={"/leaderboard"}
+                        text={"View Leaderboard"}
+                      />
+                      <Menu.Item>
+                        <button
+                          className="flex flex-auto gap-2 text-black bg-white hover:bg-emerald-300 w-full items-center rounded-md p-2 text-md"
+                          onClick={async () => {
+                            await supabase.auth.signOut();
+                            router.push("/");
+                          }}
+                        >
+                          <section className="m-1">
+                            <MdLogout />
+                          </section>
+                          Logout!
+                        </button>
+                      </Menu.Item>
+                    </>
+                  }
                 />
-                <MenuItem
-                  icon={<MdLeaderboard />}
-                  link={"/leaderboard"}
-                  text={"View Leaderboard"}
-                />
-                <Menu>
-                  <Menu.Item>
-                    <button
-                      className="flex flex-auto gap-2 text-black bg-white hover:bg-emerald-300 w-full items-center rounded-md p-2 text-md"
-                      onClick={async () => {
-                        await supabase.auth.signOut();
-                        router.push("/");
-                      }}
-                    >
-                      <section className="m-1">
-                        <MdLogout />
-                      </section>
-                      Logout!
-                    </button>
-                  </Menu.Item>
-                </Menu>
               </>
             }
           />
