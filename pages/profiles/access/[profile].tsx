@@ -191,6 +191,7 @@ let Profile = (): JSX.Element | void => {
                   <input
                     className="text-lg text-black px-2 mx-2 flex-grow text-center bg-white"
                     placeholder={`password`}
+                    type="password"
                     onChange={(e) => {
                       setPassword(e.target.value);
                     }}
