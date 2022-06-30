@@ -17,6 +17,7 @@ let ChartContainer = ({
     <>
       <section className="w-min">
         <Heatmap
+          tooltipContent=""
           colour={["#216e39"]}
           squareNumber={squares}
           count={count}

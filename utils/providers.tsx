@@ -52,7 +52,7 @@ let Provider = ({ name, content }: Props): JSX.Element => {
                 {
                   provider: `google`,
                 },
-                { redirectTo: "http://localhost:3000/profiles/" }
+                { redirectTo: "http://dok-community-tracker.vercel.app/profiles/" }
               );
             }}
           >

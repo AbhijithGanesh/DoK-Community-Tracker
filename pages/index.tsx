@@ -1,17 +1,17 @@
-import Layout from "./Layout";
-import Navbar from "../components/navbar/navbar";
-import Main from "../components/content/main";
-import About from "../components/content/about";
-import Challenges from "../components/content/challenges";
-import { DropDownMenu, MenuItem } from "../components/navbar/dropdown";
+import { NextRouter, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FiLogIn } from "react-icons/fi";
-import { MdLeaderboard, MdAddTask, MdSearch } from "react-icons/md";
-import { supabase } from "../utils/supabase";
-import { NextRouter, useRouter } from "next/router";
+import { MdAddTask, MdLeaderboard, MdSearch } from "react-icons/md";
+import About from "../components/content/about";
+import Challenges from "../components/content/challenges";
+import Main from "../components/content/main";
+import { DropDownMenu, MenuItem } from "../components/navbar/dropdown";
+import Navbar from "../components/navbar/navbar";
 import { check_login } from "../utils/auth";
 import resolve_username from "../utils/resolveUsername";
+import { supabase } from "../utils/supabase";
 import { default_user_create } from "../utils/username";
+import Layout from "./Layout";
 
 export default function Home() {
   const Router: NextRouter = useRouter();
@@ -52,7 +52,7 @@ export default function Home() {
                         />
                         <MenuItem
                           icon={<MdSearch className="text-xl" />}
-                          link="/app"
+                          link="/search"
                           text="Search for explorers"
                         />
                       </>
@@ -81,7 +81,6 @@ export default function Home() {
       } else if (res.body[0]?.username) {
         Router.push(`/profiles/access/${res.body[0]?.username}`);
       } else {
-        console.log();
       }
     });
   }

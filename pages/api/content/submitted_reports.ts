@@ -1,23 +1,23 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "../../../utils/supabase";
 
-const Username = async (
+let postReport = async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  if (req.method == "PUT") {
+  if (req?.method == "POST") {
     let data = await supabase
-      .from("Users")
-      .update({ username: req?.body?.username! })
-      .eq("userid", req.body?.userid!);
+      .from("Contribution")
+      .select("title, links, User")
+      .eq("User", JSON.parse(req?.body).userid);
     if (data?.error) {
-      res.status(data?.status).send([data, req.body?.userid!]);
+      res.status(data.status).send([data?.error, req?.body]);
     } else {
-      res.status(200).json("Inserted data");
+      res.status(data?.status!).send(data?.data!);
     }
   } else {
     res.status(405).send("Forbidden!");
   }
 };
 
-export default Username;
+export default postReport;

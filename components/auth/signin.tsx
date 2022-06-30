@@ -76,9 +76,9 @@ const EmailAddr = (): JSX.Element => {
           <br />
 
           <section className="flex flex-1">
-            <section className="bg-cyan-600 w-full flex justify-center rounded-lg my-2 hover:translate-y-0.5">
+            <section className="bg-cyan-600 w-full flex justify-center rounded-md my-2 hover:translate-y-0.5">
               <button
-                className="text-white text-lg font-bold rounded-md lg:py-1 p-1 mx-2 sm:text-md"
+                className="text-white text-xl font-semibold rounded-md lg:py-1 p-1 mx-2 sm:text-md"
                 onClick={async (e) => {
                   e.preventDefault();
                   let { session, error } = await supabase.auth.signIn({
