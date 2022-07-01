@@ -17,33 +17,32 @@ const SignUp = (): JSX.Element => {
           </section>
           <form>
             <input
-              className="bg-gray-300 text-black font-regular text-xl w-auto rounded-md px-2 mx-4 justify center my-2"
+              className="bg-gray-300 text-black font-medium text-xl rounded-md px-2 my-2 w-full"
               type="email"
               name="email"
-              placeholder="Your Email"
-              autoComplete="username"
+              placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             <input
-              className="bg-gray-300 text-black font-regular text-xl w-auto rounded-md px-2 mx-4 justify center"
+              className="bg-gray-300 text-black font-regular text-xl w-full rounded-md  px-2 justify-center"
               type="password"
               name="password"
               value={password}
-              placeholder="Enter your password"
+              placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-            <button
-              className="bg-white text-black font-semibold text-lg rounded-lg px-2 py-1"
-              onClick={(e) => {
-                sign_up_wrapper(email, password);
-                router.push("/login")
-                e.preventDefault();
-              }}
-            >
-              Signup
-            </button>
           </form>
+          <button
+            className="bg-cyan-600 my-2 w-full  text-white font-semibold text-lg rounded-lg px-2 py-1"
+            onClick={(e) => {
+              sign_up_wrapper(email, password);
+              router.push("/login");
+              e.preventDefault();
+            }}
+          >
+            Signup
+          </button>
         </>
       }
     />
