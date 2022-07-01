@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { sign_up_wrapper } from "../utils/auth";
@@ -6,6 +7,7 @@ import Layout from "./Layout";
 const SignUp = (): JSX.Element => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const router = useRouter();
   return (
     <Layout
       element={
@@ -35,7 +37,7 @@ const SignUp = (): JSX.Element => {
               className="bg-white text-black font-semibold text-lg rounded-lg px-2 py-1"
               onClick={(e) => {
                 sign_up_wrapper(email, password);
-
+                router.push("/login")
                 e.preventDefault();
               }}
             >
