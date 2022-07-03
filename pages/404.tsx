@@ -5,7 +5,7 @@ let NotFound = () => {
     <>
       <Layout
         element={
-          <section className="text-white font-medium text-2xl">
+          <section className="py-8 text-white font-medium text-2xl">
             Page Not found!
           </section>
         }
