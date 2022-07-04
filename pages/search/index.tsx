@@ -39,7 +39,7 @@ let AppHandler = (): JSX.Element => {
                 <MdSend className="text-2xl mx-2" />
               </button>
             </section>
-            <LeaderBoardSample/>
+            <LeaderBoardSample />
           </>
         }
       />

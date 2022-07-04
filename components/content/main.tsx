@@ -1,17 +1,20 @@
 import * as React from "react";
+import Image from "next/image";
+import image from "../../public/images/logo.png";
 
 const Main = (): JSX.Element => {
   return (
     <>
-      <iframe
-        width="962"
-        height="564"
-        src="https://www.youtube.com/embed/t08iIjMGvC0"
-        className="py-8 mt-10 hidden md:block lg:block"
-        title="DoK Explorers Challenge #1- CloudNativePG"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      />
-      <section className="flex flex-auto py-4 text-white text-2xl font-bold justify-center text-center">
+      <section className="mx-12 my-2">
+        <Image
+          src={image}
+          alt="Hello"
+          width={"663px"}
+          height={"275px"}
+          layout="responsive"
+        />
+      </section>
+      <section className="flex flex-auto py-4 text-white lg:text-2xl md:text-xl sm:text-lg lg:font-bold justify-center text-left">
         The open-source community you need to explore, grow and advance your{" "}
         Data on Kubernetes skills!
       </section>
